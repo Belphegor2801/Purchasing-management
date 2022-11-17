@@ -49,7 +49,7 @@ namespace Purchasing_management.Controllers
         [HttpPut("edit/{id}")]
         public async Task<IActionResult> EditPurchaseOrder(int id, PurchaseOrder purchaseOrder)
         {
-            _purchaseOrderManagement.EditPurchaseOrder(purchaseOrder);
+            _purchaseOrderManagement.EditPurchaseOrder(id, purchaseOrder);
             return Ok();
         }
 

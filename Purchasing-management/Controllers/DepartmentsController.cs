@@ -24,7 +24,7 @@ namespace Purchasing_management.Controllers
 
         // GET: api/Departments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Department>>> GetDepartments([FromQuery] Pagination<Department> filter)
+        public ActionResult<IEnumerable<Department>> GetDepartments([FromQuery] Pagination<Department> filter)
         {
             IList<Department> departments = _departmentManagement.GetDepartments(filter.Page, filter.Size);
             return Ok(departments);
@@ -32,7 +32,7 @@ namespace Purchasing_management.Controllers
 
         // GET: api/Departments/5
         [HttpGet("get/{id}")]
-        public async Task<ActionResult<Department>> GetDepartment(int id)
+        public ActionResult<Department> GetDepartment(int id)
         {
             var department = _departmentManagement.GetDepartment(id);
 
@@ -47,16 +47,16 @@ namespace Purchasing_management.Controllers
         // PUT: api/Departments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("edit/{id}")]
-        public async Task<IActionResult> EditDepartment(int id, Department department)
+        public ActionResult EditDepartment(int id, Department department)
         {
-            _departmentManagement.EditDepartment(department);
+            _departmentManagement.EditDepartment(id, department);
             return Ok();
         }
 
         // POST: api/Departments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("add", Name="AddDepartment")]
-        public async Task<ActionResult<Department>> AddDepartment(Department department)
+        public ActionResult<Department> AddDepartment(Department department)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -67,7 +67,7 @@ namespace Purchasing_management.Controllers
 
         // DELETE: api/Departments/5
         [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> DeleteDepartment(int id)
+        public IActionResult DeleteDepartment(int id)
         {
             Department department = _departmentManagement.DeleteDepartment(id);
             if (department == null) return BadRequest();

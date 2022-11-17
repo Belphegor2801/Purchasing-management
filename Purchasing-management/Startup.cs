@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Purchasing_management.Data;
 using Purchasing_management.Business.Services;
+using Serilog;
 
 namespace Purchasing_management
 {
@@ -40,7 +41,6 @@ namespace Purchasing_management
                     options.UseSqlServer(Configuration.GetConnectionString("PurchasingDBContext")));
             services.AddTransient<Purchasing_Management>();
             services.AddTransient<Department_Management>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +52,8 @@ namespace Purchasing_management
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Purchasing_management v1"));
             }
+
+            app.UseSerilogRequestLogging();
 
             app.UseHttpsRedirection();
 
