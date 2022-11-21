@@ -24,10 +24,10 @@ namespace Purchasing_management.Business.Services
             _logger.LogInformation("Start adding purchaseOrder.");
             try
             {
-                int Id = purchaseOrder.Id;
+                int id = purchaseOrder.Id;
                 _dbcontext.PurchaseOrders.Add(purchaseOrder);
                 _dbcontext.SaveChanges();
-                _logger.LogInformation("Add purchaseOrder - Id: {@Id}", Id);
+                _logger.LogInformation("Add purchaseOrder - id: {@id}", id);
                 _logger.LogInformation("End adding purchaseOrder: Success");
                 return new Response(System.Net.HttpStatusCode.OK, "Add PurchaseOrder Success!");
             }
@@ -35,24 +35,23 @@ namespace Purchasing_management.Business.Services
             {
                 _logger.LogError("Something went wrong! ", ex);
                 _logger.LogInformation("End adding purchaseOrder: Fail");
-                return new Response(System.Net.HttpStatusCode.BadRequest, "Something went wrong! " + ex);
+                return new ResponseError(System.Net.HttpStatusCode.BadRequest, "Something went wrong! " + ex);
             }
         }
 
-        public ResponseUpdate EditPurchaseOrder(int id, PurchaseOrder purchaseOrder)
+        public Response EditPurchaseOrder(int id, PurchaseOrder purchaseOrder)
         {
             _logger.LogInformation("Start editing purchaseOrder.");
             if (id != purchaseOrder.Id)
             {
                 _logger.LogError("Id not invalid");
-                return new ResponseUpdate(System.Net.HttpStatusCode.NotFound, "Id not found!!", ToGuid(id));
+                return new ResponseError(System.Net.HttpStatusCode.NotFound, "Id not found!");
             }
             try
             {
                 _dbcontext.Entry(purchaseOrder).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 _dbcontext.SaveChangesAsync();
-                int Id = purchaseOrder.Id;
-                _logger.LogInformation("Edit purchaseOrder - Id: {@Id}", Id);
+                _logger.LogInformation("Edit purchaseOrder - id: {@id}", id);
                 _logger.LogInformation("End editing purchaseOrder: Success");
                 return new ResponseUpdate(System.Net.HttpStatusCode.OK, "Edit PurchaseOrder: Success", ToGuid(id));
             }
@@ -60,28 +59,37 @@ namespace Purchasing_management.Business.Services
             {
                 _logger.LogError("Something went wrong! ", ex);
                 _logger.LogInformation("End editing purchaseOrder: Fail");
-                return new ResponseUpdate(System.Net.HttpStatusCode.BadRequest, "Something went wrong! " + ex, ToGuid(id));
+                return new ResponseError(System.Net.HttpStatusCode.BadRequest, "Something went wrong! " + ex);
             }
         }
 
-        public ResponseDelete DeletePurchaseOrder(int id)
+        public Response DeletePurchaseOrder(int id)
         {
-            _logger.LogInformation("Start deleting purchaseOrder");
-            PurchaseOrder purchaseOrder = _dbcontext.PurchaseOrders.Find(id);
-
-            if (purchaseOrder == null)
+            try
             {
-                _logger.LogError("Not found");
-                _logger.LogInformation("End getting purchaseOrder by Id: Fail");
-                return new ResponseDelete(System.Net.HttpStatusCode.NotFound, "Id Not found", ToGuid(id), "");
+                _logger.LogInformation("Start deleting purchaseOrder");
+                PurchaseOrder purchaseOrder = _dbcontext.PurchaseOrders.Find(id);
+
+                if (purchaseOrder == null)
+                {
+                    _logger.LogError("Not found");
+                    _logger.LogInformation("End deleting purchaseOrder: Fail");
+                    return new ResponseError(System.Net.HttpStatusCode.NotFound, "Id Not found");
+                }
+
+                _dbcontext.PurchaseOrders.Remove(purchaseOrder);
+                _dbcontext.SaveChangesAsync();
+                _logger.LogInformation("Deleted purchaseOrder with Id: {@id}", id);
+                _logger.LogInformation("End deleting purchaseOrder: Success");
+
+                return new ResponseDelete(System.Net.HttpStatusCode.OK, "Delete Success", ToGuid(id), "");
             }
-
-            _dbcontext.PurchaseOrders.Remove(purchaseOrder);
-            _dbcontext.SaveChangesAsync();
-            _logger.LogInformation("Deleted purchaseOrder with Id: {@id}", id);
-            _logger.LogInformation("End deleting purchaseOrder: Success");
-
-            return new ResponseDelete(System.Net.HttpStatusCode.OK, "Delete Success", ToGuid(id), "");
+            catch (Exception ex)
+            {
+                _logger.LogError("Something went wrong! ", ex);
+                _logger.LogInformation("End deleting purchaseOrder: Fail");
+                return new ResponseError(System.Net.HttpStatusCode.BadRequest, "Something went wrong! " + ex);
+            }
         }
 
         public ResponsePagination<PurchaseOrder> GetPurchaseOrders(int page, int size)
@@ -103,6 +111,9 @@ namespace Purchasing_management.Business.Services
             }
             catch (Exception ex)
             {
+                _logger.LogError("Something went wrong! ", ex);
+                _logger.LogInformation("End getting purchaseOrder: Fail");
+
                 responsePagination.Code = System.Net.HttpStatusCode.BadRequest;
                 responsePagination.Message = "Something went wrong! " + ex;
                 responsePagination.Data.Content = null;

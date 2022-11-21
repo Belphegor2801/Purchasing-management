@@ -49,7 +49,7 @@ namespace Purchasing_management.Controllers
         [HttpPut("edit/{id}")]
         public ActionResult EditPurchaseOrder(int id, PurchaseOrder purchaseOrder)
         {
-            ResponseUpdate response = _purchaseOrderManagement.EditPurchaseOrder(id, purchaseOrder);
+            Response response = _purchaseOrderManagement.EditPurchaseOrder(id, purchaseOrder);
             return Ok(response.Code);
         }
 
@@ -69,9 +69,8 @@ namespace Purchasing_management.Controllers
         [HttpDelete("delete/{id}")]
         public IActionResult DeletePurchaseOrder(int id)
         {
-            ResponseDelete reponse = _purchaseOrderManagement.DeletePurchaseOrder(id);
-            if (reponse.Data == null) return BadRequest();
-            else return Ok(reponse.Code);
+            Response reponse = _purchaseOrderManagement.DeletePurchaseOrder(id);
+            return Ok(reponse.Code);
         }
     }
 }

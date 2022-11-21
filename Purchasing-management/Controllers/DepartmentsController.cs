@@ -24,7 +24,7 @@ namespace Purchasing_management.Controllers
 
         // GET: api/Departments
         [HttpGet]
-        public ActionResult<IEnumerable<Department>> GetDepartments([FromQuery] Pagination<Department> filter)
+        public ActionResult<IList<Department>> GetDepartments([FromQuery] Pagination<Department> filter)
         {
             ResponsePagination<Department> response = _departmentManagement.GetDepartments(filter.Page, filter.Size);
             return response.Data.Content;
@@ -34,13 +34,7 @@ namespace Purchasing_management.Controllers
         [HttpGet("get/{id}")]
         public ActionResult<Department> GetDepartment(int id)
         {
-            Response<Department> response = _departmentManagement.GetDepartment(id);
-
-            if (response.Data == null)
-            {
-                return NotFound();
-            }
-
+            var response = _departmentManagement.GetDepartment(id);
             return response.Data;
         }
 
@@ -49,8 +43,8 @@ namespace Purchasing_management.Controllers
         [HttpPut("edit/{id}")]
         public ActionResult EditDepartment(int id, Department department)
         {
-            ResponseUpdate response = _departmentManagement.EditDepartment(id, department);
-            return Ok(response.Code);
+            var response = _departmentManagement.EditDepartment(id, department);
+            return Ok();
         }
 
         // POST: api/Departments
@@ -60,7 +54,7 @@ namespace Purchasing_management.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            Response response =  _departmentManagement.AddDepartment(department);
+            var response =  _departmentManagement.AddDepartment(department);
 
             return CreatedAtRoute("AddDepartment", new { id = department.Id }, department);
         }
@@ -69,9 +63,8 @@ namespace Purchasing_management.Controllers
         [HttpDelete("delete/{id}")]
         public IActionResult DeleteDepartment(int id)
         {
-            ResponseDelete reponse = _departmentManagement.DeleteDepartment(id);
-            if (reponse.Data == null) return BadRequest();
-            else return Ok(reponse.Code);
+            var reponse = _departmentManagement.DeleteDepartment(id);
+            return Ok(reponse);
         }
     }
 }

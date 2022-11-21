@@ -35,17 +35,17 @@ namespace Purchasing_management.Business.Services
             {
                 _logger.LogError("Something went wrong! ", ex);
                 _logger.LogInformation("End adding department: Fail");
-                return new Response(System.Net.HttpStatusCode.BadRequest, "Something went wrong! " + ex);
+                return new ResponseError(System.Net.HttpStatusCode.BadRequest, "Something went wrong! " + ex);
             }
         }
 
-        public ResponseUpdate EditDepartment(int id, Department department)
+        public Response EditDepartment(int id, Department department)
         {
             _logger.LogInformation("Start editing department.");
             if (id != department.Id)
             {
                 _logger.LogError("Id not invalid");
-                return new ResponseUpdate(System.Net.HttpStatusCode.NotFound, "Id not found!!", ToGuid(id));
+                return new ResponseError(System.Net.HttpStatusCode.NotFound, "Id not found!");
             }
             try
             {
@@ -60,28 +60,37 @@ namespace Purchasing_management.Business.Services
             {
                 _logger.LogError("Something went wrong! ", ex);
                 _logger.LogInformation("End editing department: Fail");
-                return new ResponseUpdate(System.Net.HttpStatusCode.BadRequest, "Something went wrong! " + ex, ToGuid(id));
+                return new ResponseError(System.Net.HttpStatusCode.BadRequest, "Something went wrong! " + ex);
             }
         }
 
-        public ResponseDelete DeleteDepartment(int id)
+        public Response DeleteDepartment(int id)
         {
-            _logger.LogInformation("Start deleting department");
-            Department department = _dbcontext.Departments.Find(id);
-            
-            if (department == null)
+            try
             {
-                _logger.LogError("Not found");
-                _logger.LogInformation("End getting department by Id: Fail");
-                return new ResponseDelete(System.Net.HttpStatusCode.NotFound, "Id Not found", ToGuid(id), "");
+                _logger.LogInformation("Start deleting department");
+                Department department = _dbcontext.Departments.Find(id);
+
+                if (department == null)
+                {
+                    _logger.LogError("Not found");
+                    _logger.LogInformation("End deleting department: Fail");
+                    return new ResponseError(System.Net.HttpStatusCode.NotFound, "Id Not found");
+                }
+
+                _dbcontext.Departments.Remove(department);
+                _dbcontext.SaveChangesAsync();
+                _logger.LogInformation("Deleted department with Id: {@id}", id);
+                _logger.LogInformation("End deleting department: Success");
+
+                return new ResponseDelete(System.Net.HttpStatusCode.OK, "Delete Success", ToGuid(id), "");
             }
-
-            _dbcontext.Departments.Remove(department);
-            _dbcontext.SaveChangesAsync();
-            _logger.LogInformation("Deleted department with Id: {@id}", id);
-            _logger.LogInformation("End deleting department: Success");
-
-            return new ResponseDelete(System.Net.HttpStatusCode.OK, "Delete Success", ToGuid(id), "");
+            catch (Exception ex)
+            {
+                _logger.LogError("Something went wrong! ", ex);
+                _logger.LogInformation("End deleting department: Fail");
+                return new ResponseError(System.Net.HttpStatusCode.BadRequest, "Something went wrong! " + ex);
+            }
         }
 
         public ResponsePagination<Department> GetDepartments(int page, int size)
@@ -103,6 +112,9 @@ namespace Purchasing_management.Business.Services
             }
             catch (Exception ex)
             {
+                _logger.LogError("Something went wrong! ", ex);
+                _logger.LogInformation("End getting department: Fail");
+
                 responsePagination.Code = System.Net.HttpStatusCode.BadRequest;
                 responsePagination.Message = "Something went wrong! " + ex;
                 responsePagination.Data.Content = null;
