@@ -135,6 +135,7 @@ namespace Purchasing_management.Business.Services
                 {
                     _logger.LogError("Not found department with Id: {@id}", id);
                     _logger.LogInformation("End getting department by Id: Fail");
+                    return new Response<Department>(System.Net.HttpStatusCode.NotFound, department, "Department Not Found!");
                 }
                 _logger.LogInformation("End getting department by Id: Success");
                 return new Response<Department>(System.Net.HttpStatusCode.OK, department);

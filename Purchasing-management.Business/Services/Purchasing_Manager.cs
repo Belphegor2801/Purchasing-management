@@ -134,6 +134,7 @@ namespace Purchasing_management.Business.Services
                 {
                     _logger.LogError("Not found purchaseOrder with Id: {@id}", id);
                     _logger.LogInformation("End getting purchaseOrder by Id: Fail");
+                    return new Response<PurchaseOrder>(System.Net.HttpStatusCode.OK, purchaseOrder, "PurchaseOrder Not Found!");
                 }
                 _logger.LogInformation("End getting purchaseOrder by Id: Success");
                 return new Response<PurchaseOrder>(System.Net.HttpStatusCode.OK, purchaseOrder);
