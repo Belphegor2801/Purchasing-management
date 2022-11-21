@@ -16,8 +16,8 @@ namespace Purchasing_management.Controllers
     [ApiController]
     public class DepartmentsController : ControllerBase
     {
-        private readonly Department_Management _departmentManagement;
-        public DepartmentsController(Department_Management departmentManagement)
+        private readonly Department_Manager _departmentManagement;
+        public DepartmentsController(Department_Manager departmentManagement)
         {
             _departmentManagement = departmentManagement;
         }
@@ -26,22 +26,22 @@ namespace Purchasing_management.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Department>> GetDepartments([FromQuery] Pagination<Department> filter)
         {
-            IList<Department> departments = _departmentManagement.GetDepartments(filter.Page, filter.Size);
-            return Ok(departments);
+            ResponsePagination<Department> response = _departmentManagement.GetDepartments(filter.Page, filter.Size);
+            return response.Data.Content;
         }
 
         // GET: api/Departments/5
         [HttpGet("get/{id}")]
         public ActionResult<Department> GetDepartment(int id)
         {
-            var department = _departmentManagement.GetDepartment(id);
+            Response<Department> response = _departmentManagement.GetDepartment(id);
 
-            if (department == null)
+            if (response.Data == null)
             {
                 return NotFound();
             }
 
-            return department;
+            return response.Data;
         }
 
         // PUT: api/Departments/5
@@ -49,8 +49,8 @@ namespace Purchasing_management.Controllers
         [HttpPut("edit/{id}")]
         public ActionResult EditDepartment(int id, Department department)
         {
-            _departmentManagement.EditDepartment(id, department);
-            return Ok();
+            ResponseUpdate response = _departmentManagement.EditDepartment(id, department);
+            return Ok(response.Code);
         }
 
         // POST: api/Departments
@@ -60,7 +60,7 @@ namespace Purchasing_management.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            _departmentManagement.AddDepartment(department);
+            Response response =  _departmentManagement.AddDepartment(department);
 
             return CreatedAtRoute("AddDepartment", new { id = department.Id }, department);
         }
@@ -69,9 +69,9 @@ namespace Purchasing_management.Controllers
         [HttpDelete("delete/{id}")]
         public IActionResult DeleteDepartment(int id)
         {
-            Department department = _departmentManagement.DeleteDepartment(id);
-            if (department == null) return BadRequest();
-            else return Ok(department);
+            ResponseDelete reponse = _departmentManagement.DeleteDepartment(id);
+            if (reponse.Data == null) return BadRequest();
+            else return Ok(reponse.Code);
         }
     }
 }

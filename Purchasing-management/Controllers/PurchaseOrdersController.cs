@@ -16,62 +16,62 @@ namespace Purchasing_management.Controllers
     [ApiController]
     public class PurchaseOrdersController : ControllerBase
     {
-        private readonly Purchasing_Management _purchaseOrderManagement;
-        public PurchaseOrdersController(Purchasing_Management purchaseOrderManagement)
+        private readonly Purchasing_Manager _purchaseOrderManagement;
+        public PurchaseOrdersController(Purchasing_Manager purchaseOrderManagement)
         {
             _purchaseOrderManagement = purchaseOrderManagement;
         }
 
         // GET: api/PurchaseOrders
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PurchaseOrder>>> GetPurchaseOrders([FromQuery] Pagination<PurchaseOrder> filter)
+        public ActionResult<IEnumerable<PurchaseOrder>> GetPurchaseOrders([FromQuery] Pagination<PurchaseOrder> filter)
         {
-            IList<PurchaseOrder> purchaseOrders = _purchaseOrderManagement.GetPurchaseOrders(filter.Page, filter.Size);
-            return Ok(purchaseOrders);
+            ResponsePagination<PurchaseOrder> response = _purchaseOrderManagement.GetPurchaseOrders(filter.Page, filter.Size);
+            return response.Data.Content;
         }
 
         // GET: api/PurchaseOrders/5
         [HttpGet("get/{id}")]
-        public async Task<ActionResult<PurchaseOrder>> GetPurchaseOrder(int id)
+        public ActionResult<PurchaseOrder> GetPurchaseOrder(int id)
         {
-            var purchaseOrder = _purchaseOrderManagement.GetPurchaseOrder(id);
+            Response<PurchaseOrder> response = _purchaseOrderManagement.GetPurchaseOrder(id);
 
-            if (purchaseOrder == null)
+            if (response.Data == null)
             {
                 return NotFound();
             }
 
-            return purchaseOrder;
+            return response.Data;
         }
 
         // PUT: api/PurchaseOrders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("edit/{id}")]
-        public async Task<IActionResult> EditPurchaseOrder(int id, PurchaseOrder purchaseOrder)
+        public ActionResult EditPurchaseOrder(int id, PurchaseOrder purchaseOrder)
         {
-            _purchaseOrderManagement.EditPurchaseOrder(id, purchaseOrder);
-            return Ok();
+            ResponseUpdate response = _purchaseOrderManagement.EditPurchaseOrder(id, purchaseOrder);
+            return Ok(response.Code);
         }
 
         // POST: api/PurchaseOrders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("add", Name = "AddPurchaseOrder")]
-        public async Task<ActionResult<PurchaseOrder>> AddPurchaseOrder(PurchaseOrder purchaseOrder)
+        public ActionResult<PurchaseOrder> AddPurchaseOrder(PurchaseOrder purchaseOrder)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            _purchaseOrderManagement.AddPurchaseOrder(purchaseOrder);
+            Response response = _purchaseOrderManagement.AddPurchaseOrder(purchaseOrder);
 
             return CreatedAtRoute("AddPurchaseOrder", new { id = purchaseOrder.Id }, purchaseOrder);
         }
 
         // DELETE: api/PurchaseOrders/5
         [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> DeletePurchaseOrder(int id)
+        public IActionResult DeletePurchaseOrder(int id)
         {
-            PurchaseOrder purchaseOrder = _purchaseOrderManagement.DeletePurchaseOrder(id);
-            if (purchaseOrder == null) return BadRequest();
-            else return Ok(purchaseOrder);
+            ResponseDelete reponse = _purchaseOrderManagement.DeletePurchaseOrder(id);
+            if (reponse.Data == null) return BadRequest();
+            else return Ok(reponse.Code);
         }
     }
 }

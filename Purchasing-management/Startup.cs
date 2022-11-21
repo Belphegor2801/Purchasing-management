@@ -39,8 +39,8 @@ namespace Purchasing_management
 
             services.AddDbContext<PurchasingDBContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("PurchasingDBContext")));
-            services.AddTransient<Purchasing_Management>();
-            services.AddTransient<Department_Management>();
+            services.AddTransient<Purchasing_Manager>();
+            services.AddTransient<Department_Manager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
