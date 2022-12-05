@@ -167,3 +167,281 @@ Error Number:4060,State:1,Class:11
 11/21/2022 13:44:26 +07:00 End getting department by Id: Success
 11/21/2022 13:44:26 +07:00 HTTP "GET" "/api/Departments/get/4" responded 200 in 78.4619 ms
 11/21/2022 13:50:39 +07:00 Application Starting.
+12/05/2022 14:14:51 +07:00 Application Starting.
+12/05/2022 14:15:06 +07:00 Start getting department
+12/05/2022 14:15:09 +07:00 The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+12/05/2022 14:15:09 +07:00 The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+12/05/2022 14:15:10 +07:00 End getting department.
+12/05/2022 14:15:10 +07:00 HTTP "GET" "/api/Departments" responded 200 in 5174.2176 ms
+12/05/2022 14:15:25 +07:00 Start getting department by Id
+12/05/2022 14:15:25 +07:00 Getting department with Id: 6b1eea43-5597-45a6-bdea-e68c60564247
+12/05/2022 14:15:25 +07:00 End getting department by Id: Success
+12/05/2022 14:15:25 +07:00 HTTP "GET" "/api/Departments/get/6b1eea43-5597-45a6-bdea-e68c60564247" responded 200 in 357.3143 ms
+12/05/2022 14:15:33 +07:00 Start adding department.
+12/05/2022 14:15:34 +07:00 Add department - Name: "string"
+12/05/2022 14:15:34 +07:00 End adding department: Success
+12/05/2022 14:15:34 +07:00 HTTP "POST" "/api/Departments/add" responded 201 in 707.1795 ms
+12/05/2022 14:15:42 +07:00 Start getting department
+12/05/2022 14:15:42 +07:00 End getting department.
+12/05/2022 14:15:42 +07:00 HTTP "GET" "/api/Departments" responded 200 in 5.8430 ms
+12/05/2022 14:15:51 +07:00 Start getting purchaseOrder
+12/05/2022 14:15:51 +07:00 The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+12/05/2022 14:15:51 +07:00 The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+12/05/2022 14:15:51 +07:00 End getting purchaseOrder.
+12/05/2022 14:15:51 +07:00 HTTP "GET" "/api/PurchaseOrders" responded 200 in 27.8796 ms
+12/05/2022 14:20:21 +07:00 Application Starting.
+12/05/2022 14:20:43 +07:00 Start getting department
+12/05/2022 14:20:45 +07:00 The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+12/05/2022 14:20:45 +07:00 The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results.
+12/05/2022 14:20:47 +07:00 End getting department.
+12/05/2022 14:20:47 +07:00 HTTP "GET" "/api/Departments" responded 200 in 5075.6480 ms
+12/05/2022 14:20:54 +07:00 Start getting department
+12/05/2022 14:20:54 +07:00 End getting department.
+12/05/2022 14:20:54 +07:00 HTTP "GET" "/api/Departments" responded 200 in 84.7259 ms
+12/05/2022 14:35:56 +07:00 Application Starting.
+12/05/2022 14:36:23 +07:00 Start getting department
+12/05/2022 14:37:51 +07:00 Application Starting.
+12/05/2022 14:38:00 +07:00 Start getting department
+12/05/2022 14:38:06 +07:00 End getting department.
+12/05/2022 14:38:06 +07:00 HTTP "GET" "/api/Departments" responded 200 in 6716.7681 ms
+12/05/2022 14:38:23 +07:00 Start getting department
+12/05/2022 14:38:24 +07:00 End getting department.
+12/05/2022 14:38:24 +07:00 HTTP "GET" "/api/Departments" responded 200 in 264.3898 ms
+12/05/2022 14:38:32 +07:00 Start getting department
+12/05/2022 14:38:32 +07:00 End getting department.
+12/05/2022 14:38:32 +07:00 HTTP "GET" "/api/Departments" responded 200 in 36.6165 ms
+12/05/2022 14:38:43 +07:00 Start getting department
+12/05/2022 14:38:43 +07:00 End getting department.
+12/05/2022 14:38:43 +07:00 HTTP "GET" "/api/Departments" responded 200 in 52.8379 ms
+12/05/2022 14:38:48 +07:00 Start getting department
+12/05/2022 14:38:48 +07:00 End getting department.
+12/05/2022 14:38:48 +07:00 HTTP "GET" "/api/Departments" responded 200 in 24.7573 ms
+12/05/2022 14:43:42 +07:00 Application Starting.
+12/05/2022 14:43:56 +07:00 Start getting department
+12/05/2022 14:44:01 +07:00 End getting department.
+12/05/2022 14:44:01 +07:00 HTTP "GET" "/api/Departments" responded 200 in 5870.4709 ms
+12/05/2022 14:44:13 +07:00 Start getting department by Id
+12/05/2022 14:44:13 +07:00 Getting department with Id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+12/05/2022 14:44:14 +07:00 End getting department by Id: Success
+12/05/2022 14:44:14 +07:00 HTTP "GET" "/api/Departments/get/3fa85f64-5717-4562-b3fc-2c963f66afa6" responded 200 in 699.6727 ms
+12/05/2022 14:44:48 +07:00 Start editing department.
+12/05/2022 14:44:49 +07:00 Edit department - Name: "Ban Sự Kiện"
+12/05/2022 14:44:49 +07:00 End editing department: Success
+12/05/2022 14:44:49 +07:00 HTTP "PUT" "/api/Departments/edit/3fa85f64-5717-4562-b3fc-2c963f66afa6" responded 200 in 542.1983 ms
+12/05/2022 14:44:59 +07:00 Start getting department by Id
+12/05/2022 14:44:59 +07:00 Getting department with Id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+12/05/2022 14:44:59 +07:00 End getting department by Id: Success
+12/05/2022 14:44:59 +07:00 HTTP "GET" "/api/Departments/get/3fa85f64-5717-4562-b3fc-2c963f66afa6" responded 200 in 8.2951 ms
+12/05/2022 14:45:09 +07:00 Start deleting department
+12/05/2022 14:45:09 +07:00 Deleted department with Id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+12/05/2022 14:45:09 +07:00 End deleting department: Success
+12/05/2022 14:45:09 +07:00 HTTP "DELETE" "/api/Departments/delete/3fa85f64-5717-4562-b3fc-2c963f66afa6" responded 200 in 144.0174 ms
+12/05/2022 14:45:14 +07:00 Start getting department by Id
+12/05/2022 14:45:14 +07:00 Getting department with Id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+12/05/2022 14:45:14 +07:00 Not found department with Id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+12/05/2022 14:45:14 +07:00 End getting department by Id: Fail
+12/05/2022 14:45:14 +07:00 HTTP "GET" "/api/Departments/get/3fa85f64-5717-4562-b3fc-2c963f66afa6" responded 400 in 8.7455 ms
+12/05/2022 15:18:33 +07:00 Application Starting.
+12/05/2022 15:18:47 +07:00 Start getting department
+12/05/2022 15:18:49 +07:00 End getting department.
+12/05/2022 15:18:49 +07:00 HTTP "GET" "/api/Departments" responded 200 in 2334.3420 ms
+12/05/2022 15:19:04 +07:00 Start getting department
+12/05/2022 15:19:04 +07:00 End getting department.
+12/05/2022 15:19:04 +07:00 HTTP "GET" "/api/Departments" responded 200 in 86.8899 ms
+12/05/2022 16:00:28 +07:00 Application Starting.
+12/05/2022 16:00:41 +07:00 Start getting department
+12/05/2022 16:00:43 +07:00 End getting department.
+12/05/2022 16:00:50 +07:00 An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Purchasing_management.Services.PurchasingHandler' while attempting to activate 'Purchasing_management.Controllers.PurchaseOrdersController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method59(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+12/05/2022 16:08:59 +07:00 Application Starting.
+12/05/2022 16:09:09 +07:00 An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Purchasing_management.Services.PurchasingHandler' while attempting to activate 'Purchasing_management.Controllers.PurchaseOrdersController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method9(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+12/05/2022 16:09:39 +07:00 Application Starting.
+12/05/2022 16:09:48 +07:00 Start getting department
+12/05/2022 16:09:50 +07:00 End getting department.
+12/05/2022 16:23:40 +07:00 Application Starting.
+12/05/2022 16:23:49 +07:00 Start getting department
+12/05/2022 16:23:51 +07:00 End getting department.
+12/05/2022 16:54:04 +07:00 Application Starting.
+12/05/2022 16:54:13 +07:00 Start getting department
+12/05/2022 16:54:15 +07:00 End getting department.
+12/05/2022 16:54:15 +07:00 An unhandled exception has occurred while executing the request.
+Newtonsoft.Json.JsonSerializationException: Self referencing loop detected with type 'Purchasing_management.Data.Entity.Supply'. Path 'data.content[0].supplyList[0].purchaseOrder.supplyList'.
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.CheckForCircularReference(JsonWriter writer, Object value, JsonProperty property, JsonContract contract, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.Serialize(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.SerializeInternal(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Serialize(JsonWriter jsonWriter, Object value)
+   at Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+12/05/2022 16:55:05 +07:00 Application Starting.
+12/05/2022 16:55:12 +07:00 Start getting department
+12/05/2022 16:55:14 +07:00 End getting department.
+12/05/2022 16:55:15 +07:00 An unhandled exception has occurred while executing the request.
+Newtonsoft.Json.JsonSerializationException: Self referencing loop detected with type 'Purchasing_management.Data.Entity.Supply'. Path 'data.content[0].supplyList[0].purchaseOrder.supplyList'.
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.CheckForCircularReference(JsonWriter writer, Object value, JsonProperty property, JsonContract contract, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.Serialize(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.SerializeInternal(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Serialize(JsonWriter jsonWriter, Object value)
+   at Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+12/05/2022 16:56:40 +07:00 Application Starting.
+12/05/2022 16:56:48 +07:00 Start getting department
+12/05/2022 16:56:49 +07:00 End getting department.
+12/05/2022 16:56:49 +07:00 An unhandled exception has occurred while executing the request.
+Newtonsoft.Json.JsonSerializationException: Self referencing loop detected with type 'Purchasing_management.Data.Entity.Supply'. Path 'data.content[0].supplyList[0].purchaseOrder.supplyList'.
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.CheckForCircularReference(JsonWriter writer, Object value, JsonProperty property, JsonContract contract, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeValue(JsonWriter writer, Object value, JsonContract valueContract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.Serialize(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.SerializeInternal(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Serialize(JsonWriter jsonWriter, Object value)
+   at Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.ResponseCaching.ResponseCachingMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+12/05/2022 17:05:36 +07:00 Application Starting.
+12/05/2022 17:05:49 +07:00 Start getting department
+12/05/2022 17:05:50 +07:00 End getting department.
+12/05/2022 17:10:09 +07:00 Application Starting.
+12/05/2022 17:10:20 +07:00 Start getting department
+12/05/2022 17:10:22 +07:00 End getting department.
+12/05/2022 17:11:59 +07:00 Application Starting.
+12/05/2022 17:12:32 +07:00 Application Starting.
+12/05/2022 17:12:40 +07:00 Start getting department
+12/05/2022 17:12:42 +07:00 End getting department.
+12/05/2022 17:17:41 +07:00 Application Starting.
+12/05/2022 17:18:03 +07:00 Start getting department
+12/05/2022 17:18:04 +07:00 End getting department.
+12/05/2022 17:19:17 +07:00 Application Starting.
+12/05/2022 17:19:24 +07:00 Start getting department
+12/05/2022 17:19:25 +07:00 End getting department.
+12/05/2022 17:19:31 +07:00 Start getting department
+12/05/2022 17:19:32 +07:00 End getting department.
+12/05/2022 17:20:10 +07:00 Application Starting.
+12/05/2022 17:20:18 +07:00 Start getting department
+12/05/2022 17:20:19 +07:00 End getting department.
+12/05/2022 17:20:28 +07:00 Start getting purchaseOrder by Id
+12/05/2022 17:20:28 +07:00 Getting purchaseOrder with Id: cb554ed6-8fa7-4b8d-8d90-55cc6a3e0074
+12/05/2022 17:20:28 +07:00 End getting purchaseOrder by Id: Success
+12/05/2022 17:26:14 +07:00 Application Starting.
+12/05/2022 17:26:25 +07:00 Start getting department
+12/05/2022 17:26:26 +07:00 End getting department.
+12/05/2022 17:26:35 +07:00 Start getting purchaseOrder by Id
+12/05/2022 17:26:35 +07:00 Getting purchaseOrder with Id: cb554ed6-8fa7-4b8d-8d90-55cc6a3e0074
+12/05/2022 17:26:35 +07:00 End getting purchaseOrder by Id: Success

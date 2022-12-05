@@ -1,10 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Purchasing_management.Common
 {
@@ -17,6 +12,8 @@ namespace Purchasing_management.Common
         {
             configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
                                                              .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
+                                                             .AddJsonFile($"appsettings.Production.json",
+                                                             optional: true, reloadOnChange: false)
                                                              .Build();
         }
 

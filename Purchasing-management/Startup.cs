@@ -2,19 +2,27 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using System;
+using System.Text.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Purchasing_management.Data;
-using Purchasing_management.Business.Services;
+using Purchasing_management.Services;
+using Purchasing_management.Common;
 using Serilog;
+using AutoMapper;
+using Newtonsoft.Json;
 
 namespace Purchasing_management
 {
@@ -30,8 +38,19 @@ namespace Purchasing_management
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddResponseCaching();
+            services.AddControllers(setupAction =>
+            {
+                setupAction.ReturnHttpNotAcceptable = true;
+                setupAction.CacheProfiles.Add("90SecondsCacheProfile", new CacheProfile { Duration = 90 });
 
-            services.AddControllers();
+            }).AddNewtonsoftJson(setupAction =>
+            {
+                setupAction.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            }).AddXmlDataContractSerializerFormatters();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Purchasing_management", Version = "v1" });
@@ -39,8 +58,17 @@ namespace Purchasing_management
 
             services.AddDbContext<PurchasingDBContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("PurchasingDBContext")));
-            services.AddTransient<Purchasing_Manager>();
-            services.AddTransient<Department_Manager>();
+
+            services.AddTransient<DepartmentHandler>();
+            services.AddTransient<PurchasingHandler>();
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IDatabaseFactory, DatabaseFactory>();
+
+            services.AddMvc()
+                 .AddNewtonsoftJson(
+                      options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; }
+                  );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,12 +78,23 @@ namespace Purchasing_management
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Purchasing_management v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PurchasingManagement v1"));
+            }
+            else
+            {
+                app.UseExceptionHandler(appBuilder =>
+                {
+                    appBuilder.Run(async c =>
+                    {
+                        c.Response.StatusCode = 500;
+                        await c.Response.WriteAsync("Something went wrong! Try again later!");
+                    });
+                });
             }
 
-            app.UseSerilogRequestLogging();
-
             app.UseHttpsRedirection();
+
+            app.UseResponseCaching();
 
             app.UseRouting();
 

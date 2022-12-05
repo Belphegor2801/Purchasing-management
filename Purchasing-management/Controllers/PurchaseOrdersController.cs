@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Purchasing_management.Data;
 using Purchasing_management.Data.Entity;
-using Purchasing_management.Business.Services;
+using Purchasing_management.Services;
 using Purchasing_management.Common;
 
 namespace Purchasing_management.Controllers
@@ -16,61 +16,52 @@ namespace Purchasing_management.Controllers
     [ApiController]
     public class PurchaseOrdersController : ControllerBase
     {
-        private readonly Purchasing_Manager _purchaseOrderManagement;
-        public PurchaseOrdersController(Purchasing_Manager purchaseOrderManagement)
+        private readonly PurchasingHandler _purchaseOrderHandler;
+        public PurchaseOrdersController(PurchasingHandler purchaseOrderManagement)
         {
-            _purchaseOrderManagement = purchaseOrderManagement;
+            _purchaseOrderHandler = purchaseOrderManagement;
         }
 
         // GET: api/PurchaseOrders
         [HttpGet]
-        public ActionResult<IEnumerable<PurchaseOrder>> GetPurchaseOrders([FromQuery] Pagination<PurchaseOrder> filter)
+        public async Task<IActionResult> GetPurchaseOrders([FromQuery] PaginationRequest paginationRequest)
         {
-            ResponsePagination<PurchaseOrder> response = _purchaseOrderManagement.GetPurchaseOrders(filter.Page, filter.Size);
-            return response.Data.Content;
+            var result = await _purchaseOrderHandler.GetPurchaseOrders(paginationRequest);
+            return Helper.TransformData(result);
         }
 
         // GET: api/PurchaseOrders/5
         [HttpGet("get/{id}")]
-        public ActionResult<PurchaseOrder> GetPurchaseOrder(int id)
+        public async Task<IActionResult> GetPurchaseOrder(Guid id)
         {
-            Response<PurchaseOrder> response = _purchaseOrderManagement.GetPurchaseOrder(id);
-
-            if (response.Data == null)
-            {
-                return NotFound();
-            }
-
-            return response.Data;
+            var result = await _purchaseOrderHandler.GetPurchaseOrder(id);
+            return Helper.TransformData(result);
         }
 
         // PUT: api/PurchaseOrders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("edit/{id}")]
-        public ActionResult EditPurchaseOrder(int id, PurchaseOrder purchaseOrder)
+        public async Task<IActionResult> EditPurchaseOrder(Guid id, PurchaseOrder department)
         {
-            Response response = _purchaseOrderManagement.EditPurchaseOrder(id, purchaseOrder);
-            return Ok(response.Code);
+            var result = await _purchaseOrderHandler.EditPurchaseOrder(id, department);
+            return Helper.TransformData(result);
         }
 
         // POST: api/PurchaseOrders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("add", Name = "AddPurchaseOrder")]
-        public ActionResult<PurchaseOrder> AddPurchaseOrder(PurchaseOrder purchaseOrder)
+        [HttpPost("add", Name="AddPurchaseOrder")]
+        public async Task<IActionResult> AddPurchaseOrder(PurchaseOrder department)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
-            Response response = _purchaseOrderManagement.AddPurchaseOrder(purchaseOrder);
-
-            return CreatedAtRoute("AddPurchaseOrder", new { id = purchaseOrder.Id }, purchaseOrder);
+            var result = await _purchaseOrderHandler.AddPurchaseOrder(department);
+            return Helper.TransformData(result);
         }
 
         // DELETE: api/PurchaseOrders/5
         [HttpDelete("delete/{id}")]
-        public IActionResult DeletePurchaseOrder(int id)
+        public async Task<IActionResult> DeletePurchaseOrder(Guid departmentId)
         {
-            Response reponse = _purchaseOrderManagement.DeletePurchaseOrder(id);
-            return Ok(reponse.Code);
+            var result = await _purchaseOrderHandler.DeletePurchaseOrder(departmentId);
+            return Helper.TransformData(result);
         }
     }
 }

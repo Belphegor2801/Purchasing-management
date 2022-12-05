@@ -1,16 +1,15 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Purchasing_management.Common
 {
+    /// <summary>
+    ///     Return object
+    /// </summary>
     public class Response
     {
-
         [JsonConstructor]
         public Response(HttpStatusCode code, string message)
         {
@@ -41,11 +40,6 @@ namespace Purchasing_management.Common
         /// Time requested
         /// </summary>
         public long TotalTime { get; set; } = 0;
-
-        public bool IsSuccess
-        {
-            get { return Code == HttpStatusCode.OK; }
-        }
     }
 
     /// <summary>
@@ -134,12 +128,6 @@ namespace Purchasing_management.Common
             Content = new List<T>();
         }
 
-        public Pagination(int page, int size)
-        {
-            this.Page = page < 1 ? 1 : page;
-            this.Size = Size > 20 ? 20 : size;
-        }
-
         /// <summary>
         ///Current page position
         /// </summary>
@@ -187,6 +175,36 @@ namespace Purchasing_management.Common
         public List<Dictionary<string, string>> ErrorDetail { get; set; }
     }
 
+    /// <summary>
+    ///     Trả về dạng đối tượng
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class ResponseObject<T> : Response
+    {
+        [JsonConstructor]
+        public ResponseObject(T data)
+        {
+            Data = data;
+        }
+
+        public ResponseObject(T data, string message)
+        {
+            Data = data;
+            Message = message;
+        }
+
+        public ResponseObject(T data, string message, HttpStatusCode code)
+        {
+            Code = code;
+            Data = data;
+            Message = message;
+        }
+
+        /// <summary>
+        ///     Dữ liệu trả về
+        /// </summary>
+        public T Data { get; set; }
+    }
 
     /// <summary>
     ///     Trả về kết quả cập nhật dữ liệu
@@ -304,4 +322,3 @@ namespace Purchasing_management.Common
         public string Name { get; set; }
     }
 }
-

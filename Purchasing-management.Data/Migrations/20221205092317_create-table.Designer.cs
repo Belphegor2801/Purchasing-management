@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Purchasing_management.Data;
 
 namespace Purchasing_management.Data.Migrations
 {
     [DbContext(typeof(PurchasingDBContext))]
-    partial class PurchasingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20221205092317_create-table")]
+    partial class createtable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

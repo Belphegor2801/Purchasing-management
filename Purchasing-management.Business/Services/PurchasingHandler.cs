@@ -1,30 +1,33 @@
 ﻿using Purchasing_management.Data;
 using Purchasing_management.Data.Entity;
 using Purchasing_management.Common;
-using System.Collections.Generic;
-using System.Linq;
 using System;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using LinqKit;
+using System.Linq.Expressions;
+using System.Linq;
 
-namespace Purchasing_management.Business.Services
+namespace Purchasing_management.Services
 {
-    public class Purchasing_Manager
+    public class PurchasingHandler
     {
         private readonly PurchasingDBContext _dbcontext;
-        private readonly ILogger<Purchasing_Manager> _logger;
+        private readonly ILogger<PurchasingHandler> _logger;
+        private readonly DbHandler<PurchaseOrder, PurchaseOrder, PaginationRequest> _dbHandler = DbHandler<PurchaseOrder, PurchaseOrder, PaginationRequest>.Instance;
 
-        public Purchasing_Manager(PurchasingDBContext DBContext, ILogger<Purchasing_Manager> logger)
+        public PurchasingHandler(PurchasingDBContext DBContext, ILogger<PurchasingHandler> logger)
         {
             _dbcontext = DBContext;
             _logger = logger;
         }
 
-        public Response AddPurchaseOrder(PurchaseOrder purchaseOrder)
+        public async Task<Response> AddPurchaseOrder(PurchaseOrder purchaseOrder)
         {
             _logger.LogInformation("Start adding purchaseOrder.");
             try
             {
-                int id = purchaseOrder.Id;
+                Guid id = purchaseOrder.Id;
                 _dbcontext.PurchaseOrders.Add(purchaseOrder);
                 _dbcontext.SaveChanges();
                 _logger.LogInformation("Add purchaseOrder - id: {@id}", id);
@@ -39,13 +42,13 @@ namespace Purchasing_management.Business.Services
             }
         }
 
-        public Response EditPurchaseOrder(int id, PurchaseOrder purchaseOrder)
+        public async Task<Response> EditPurchaseOrder(Guid id, PurchaseOrder purchaseOrder)
         {
             _logger.LogInformation("Start editing purchaseOrder.");
             if (id != purchaseOrder.Id)
             {
-                _logger.LogError("Id not invalid");
-                return new ResponseError(System.Net.HttpStatusCode.NotFound, "Id not found!");
+                _logger.LogError("Id invalid");
+                return new ResponseError(System.Net.HttpStatusCode.NotFound, "Id invalid!");
             }
             try
             {
@@ -53,7 +56,7 @@ namespace Purchasing_management.Business.Services
                 _dbcontext.SaveChangesAsync();
                 _logger.LogInformation("Edit purchaseOrder - id: {@id}", id);
                 _logger.LogInformation("End editing purchaseOrder: Success");
-                return new ResponseUpdate(System.Net.HttpStatusCode.OK, "Edit PurchaseOrder: Success", ToGuid(id));
+                return new ResponseUpdate(System.Net.HttpStatusCode.OK, "Edit PurchaseOrder: Success", id);
             }
             catch (Exception ex)
             {
@@ -63,7 +66,7 @@ namespace Purchasing_management.Business.Services
             }
         }
 
-        public Response DeletePurchaseOrder(int id)
+        public async Task<Response> DeletePurchaseOrder(Guid id)
         {
             try
             {
@@ -82,7 +85,7 @@ namespace Purchasing_management.Business.Services
                 _logger.LogInformation("Deleted purchaseOrder with Id: {@id}", id);
                 _logger.LogInformation("End deleting purchaseOrder: Success");
 
-                return new ResponseDelete(System.Net.HttpStatusCode.OK, "Delete Success", ToGuid(id), "");
+                return new ResponseDelete(System.Net.HttpStatusCode.OK, "Delete Success", id, "");
             }
             catch (Exception ex)
             {
@@ -92,36 +95,24 @@ namespace Purchasing_management.Business.Services
             }
         }
 
-        public ResponsePagination<PurchaseOrder> GetPurchaseOrders(int page, int size)
+        public async Task<Response> GetPurchaseOrders(PaginationRequest paginationRequest)
         {
-            var validFilter = new Pagination<PurchaseOrder>(page, size);
-            ResponsePagination<PurchaseOrder> responsePagination = new ResponsePagination<PurchaseOrder>(validFilter);
             try
             {
-                _logger.LogInformation("Start getting purchaseOrder");
-                IList<PurchaseOrder> purchaseOrders = _dbcontext.PurchaseOrders
-                                                .Skip((responsePagination.Data.Page - 1) * responsePagination.Data.Size)
-                                                .Take(responsePagination.Data.Size)
-                                                .ToList<PurchaseOrder>();
-                _logger.LogInformation("End getting purchaseOrder.");
-                responsePagination.Code = System.Net.HttpStatusCode.OK;
-                responsePagination.Message = "OK";
-                responsePagination.Data.Content = purchaseOrders.ToList<PurchaseOrder>();
-                return responsePagination;
+                _logger.LogInformation("Start getting department");
+                var predicate = BuildQuery(paginationRequest);
+                var result = await _dbHandler.GetPageAsync(predicate, paginationRequest);
+                _logger.LogInformation("End getting department.");
+                return result;
             }
             catch (Exception ex)
             {
                 _logger.LogError("Something went wrong! ", ex);
-                _logger.LogInformation("End getting purchaseOrder: Fail");
-
-                responsePagination.Code = System.Net.HttpStatusCode.BadRequest;
-                responsePagination.Message = "Something went wrong! " + ex;
-                responsePagination.Data.Content = null;
-                return responsePagination;
+                _logger.LogInformation("End getting department: Fail");
+                return new ResponseError(System.Net.HttpStatusCode.BadRequest, "Something went wrong! " + ex);
             }
         }
-
-        public Response<PurchaseOrder> GetPurchaseOrder(int id)
+        public async Task<Response> GetPurchaseOrder(Guid id)
         {
             _logger.LogInformation("Start getting purchaseOrder by Id");
 
@@ -129,12 +120,12 @@ namespace Purchasing_management.Business.Services
             try
             {
                 _logger.LogInformation("Getting purchaseOrder with Id: {@id}", id);
-                purchaseOrder = _dbcontext.PurchaseOrders.Find(id);
+                purchaseOrder = _dbcontext.PurchaseOrders.Include(CustomExtensions.GetIncludePaths(_dbcontext, typeof(PurchaseOrder))).SingleOrDefault(i => i.Id == id);
                 if (purchaseOrder == null)
                 {
                     _logger.LogError("Not found purchaseOrder with Id: {@id}", id);
                     _logger.LogInformation("End getting purchaseOrder by Id: Fail");
-                    return new Response<PurchaseOrder>(System.Net.HttpStatusCode.OK, purchaseOrder, "PurchaseOrder Not Found!");
+                    return new ResponseError(System.Net.HttpStatusCode.BadRequest, "PurchaseOrder not found! ");
                 }
                 _logger.LogInformation("End getting purchaseOrder by Id: Success");
                 return new Response<PurchaseOrder>(System.Net.HttpStatusCode.OK, purchaseOrder);
@@ -144,15 +135,20 @@ namespace Purchasing_management.Business.Services
                 purchaseOrder = null;
                 _logger.LogError("Something went wrong! ", ex);
                 _logger.LogInformation("End getting purchaseOrder by Id: Fail");
-                return new Response<PurchaseOrder>(System.Net.HttpStatusCode.BadRequest, purchaseOrder, "Something went wrong!" + ex);
+                return new ResponseError(System.Net.HttpStatusCode.BadRequest, "Something went wrong! " + ex);
             }
         }
 
-        private static Guid ToGuid(int value)
+        private Expression<Func<PurchaseOrder, bool>> BuildQuery(PaginationRequest query)
         {
-            byte[] bytes = new byte[16];
-            BitConverter.GetBytes(value).CopyTo(bytes, 0);
-            return new Guid(bytes);
+            var predicate = PredicateBuilder.New<PurchaseOrder>(true);
+
+            if (!string.IsNullOrEmpty(query.FullTextSearch))
+            {
+                predicate.And(s => s.RegistantName.Contains(query.FullTextSearch));
+            }    
+
+            return predicate;
         }
     }
 }

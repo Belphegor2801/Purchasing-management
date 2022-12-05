@@ -7,7 +7,7 @@ namespace Purchasing_management.Data.Entity
     public class Department
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Manager { get; set; }
         public DateTime CreatedDate { get; set; }

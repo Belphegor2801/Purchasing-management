@@ -7,6 +7,8 @@
 	
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -29,6 +31,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Purchasing-management.Business\Purchasing-management.Business.csproj" />
+    <ProjectReference Include="..\Purchasing-management.common\Purchasing-management.Common.csproj" />
     <ProjectReference Include="..\Purchasing-management.Data\Purchasing-management.Data.csproj" />
   </ItemGroup>
 
