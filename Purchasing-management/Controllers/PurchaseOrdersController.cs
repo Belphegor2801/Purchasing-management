@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Purchasing_management.Data;
 using Purchasing_management.Data.Entity;
-using Purchasing_management.Services;
+using Purchasing_management.Business;
 using Purchasing_management.Common;
 
 namespace Purchasing_management.Controllers
@@ -41,26 +41,26 @@ namespace Purchasing_management.Controllers
         // PUT: api/PurchaseOrders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("edit/{id}")]
-        public async Task<IActionResult> EditPurchaseOrder(Guid id, PurchaseOrder department)
+        public async Task<IActionResult> EditPurchaseOrder(Guid id, Guid departmentId, PurchaseOrderUpdateModel purchaseOrder)
         {
-            var result = await _purchaseOrderHandler.EditPurchaseOrder(id, department);
+            var result = await _purchaseOrderHandler.EditPurchaseOrder(id, departmentId, purchaseOrder);
             return Helper.TransformData(result);
         }
 
         // POST: api/PurchaseOrders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("add", Name="AddPurchaseOrder")]
-        public async Task<IActionResult> AddPurchaseOrder(PurchaseOrder department)
+        public async Task<IActionResult> AddPurchaseOrder(PurchaseOrderCreateModel purchaseOrder)
         {
-            var result = await _purchaseOrderHandler.AddPurchaseOrder(department);
+            var result = await _purchaseOrderHandler.AddPurchaseOrder(purchaseOrder);
             return Helper.TransformData(result);
         }
 
         // DELETE: api/PurchaseOrders/5
         [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> DeletePurchaseOrder(Guid departmentId)
+        public async Task<IActionResult> DeletePurchaseOrder(Guid purchaseOrderId)
         {
-            var result = await _purchaseOrderHandler.DeletePurchaseOrder(departmentId);
+            var result = await _purchaseOrderHandler.DeletePurchaseOrder(purchaseOrderId);
             return Helper.TransformData(result);
         }
     }

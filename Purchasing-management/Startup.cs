@@ -18,7 +18,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Purchasing_management.Data;
-using Purchasing_management.Services;
+using Purchasing_management.Business;
 using Purchasing_management.Common;
 using Serilog;
 using AutoMapper;

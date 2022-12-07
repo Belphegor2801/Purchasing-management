@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Purchasing_management.Data.Entity;
-using Purchasing_management.Services;
+using Purchasing_management.Business;
 using Purchasing_management.Common;
 
 namespace Purchasing_management.Controllers
@@ -40,7 +40,7 @@ namespace Purchasing_management.Controllers
         // PUT: api/Departments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("edit/{id}")]
-        public async Task<IActionResult> EditDepartment(Guid id, Department department)
+        public async Task<IActionResult> EditDepartment(Guid id, DepartmentUpdateModel department)
         {
             var result = await _departmentHandler.EditDepartment(id, department);
             return Helper.TransformData(result);
@@ -49,7 +49,7 @@ namespace Purchasing_management.Controllers
         // POST: api/Departments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("add", Name="AddDepartment")]
-        public async Task<IActionResult> AddDepartment(Department department)
+        public async Task<IActionResult> AddDepartment(DepartmentCreateModel department)
         {
             var result = await _departmentHandler.AddDepartment(department);
             return Helper.TransformData(result);
