@@ -2,10 +2,12 @@
 using Purchasing_management.Common;
 using Purchasing_management.Data.Entity;
 using System;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Purchasing_management.Data
 {
-    public class PurchasingDBContext: DbContext
+    public class PurchasingDBContext: IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
         public PurchasingDBContext(DbContextOptions<PurchasingDBContext> options) : base(options)
         {
@@ -21,6 +23,7 @@ namespace Purchasing_management.Data
         public virtual DbSet<Purchasing_management.Data.Entity.Department> Departments { get; set; }
         public virtual DbSet<Purchasing_management.Data.Entity.PurchaseOrder> PurchaseOrders { get; set; }
         public virtual DbSet<Purchasing_management.Data.Entity.Supply> Supplies { get; set; }
+        public virtual DbSet<Purchasing_management.Data.Entity.User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -134,8 +137,16 @@ namespace Purchasing_management.Data
                 Amount = "2"
             });
 
+            modelBuilder.Entity<User>().HasData(new User
+            {
+                Id = Guid.Parse("cab51058-0996-4221-ba63-b841004e89dd"),
+                UserName = "NXH2801",
+                Email = "ngoxuanhinham123@gmail.com",
+                Password = "Admin#123",
+            });
 
             base.OnModelCreating(modelBuilder);
         }
     }
+
 }

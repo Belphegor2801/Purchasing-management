@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Purchasing_management.Data;
 using Purchasing_management.Data.Entity;
@@ -14,6 +16,7 @@ namespace Purchasing_management.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PurchaseOrdersController : ControllerBase
     {
         private readonly PurchasingHandler _purchaseOrderHandler;

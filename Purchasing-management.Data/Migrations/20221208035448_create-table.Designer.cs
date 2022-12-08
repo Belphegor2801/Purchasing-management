@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Purchasing_management.Data;
 
 namespace Purchasing_management.Data.Migrations
 {
     [DbContext(typeof(PurchasingDBContext))]
-    partial class PurchasingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20221208035448_create-table")]
+    partial class createtable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -392,21 +394,6 @@ namespace Purchasing_management.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("cab51058-0996-4221-ba63-b841004e89dd"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "ddefe6a5-99de-457c-a262-6a78e8015afd",
-                            Email = "ngoxuanhinham123@gmail.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            Password = "Admin#123",
-                            PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false,
-                            UserName = "NXH2801"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

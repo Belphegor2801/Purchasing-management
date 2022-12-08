@@ -4,7 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
+using System.IdentityModel.Tokens;
 using Purchasing_management.Data.Entity;
 using Purchasing_management.Business;
 using Purchasing_management.Common;
@@ -13,6 +17,7 @@ namespace Purchasing_management.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class DepartmentsController : ControllerBase
     {
         private readonly DepartmentHandler _departmentHandler;
@@ -23,6 +28,7 @@ namespace Purchasing_management.Controllers
         
         // GET: api/Departments
         [HttpGet]
+
         public async Task<IActionResult> GetDepartments([FromQuery] PaginationRequest paginationRequest)
         {
             var result = await _departmentHandler.GetDepartments(paginationRequest);

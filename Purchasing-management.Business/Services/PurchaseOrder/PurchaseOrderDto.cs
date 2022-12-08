@@ -14,6 +14,8 @@ namespace Purchasing_management.Business
 
         public string RegistantName { get; set; }
 
+        public Guid CreateByUserId { get; set; }
+
         public virtual ICollection<SupplyDto> SupplyList { get; set; }
     }
 

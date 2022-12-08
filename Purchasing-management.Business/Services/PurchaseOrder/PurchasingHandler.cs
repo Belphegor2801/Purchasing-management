@@ -79,7 +79,7 @@ namespace Purchasing_management.Business
             try
             {
                 var purchaseOrderEntity = _mapper.Map<PurchaseOrder>(purchaseOrder);
-                _dbcontext.PurchaseOrders.Add(purchaseOrderEntity);
+                purchaseOrderEntity.CreateByUserId = _dbcontext.UserTokens.FirstOrDefault().UserId;
                 _dbcontext.SaveChanges();
                 _logger.LogInformation("Add purchaseOrder - id: {@id}", purchaseOrderEntity.Id);
                 _logger.LogInformation("End adding purchaseOrder: Success");
@@ -112,7 +112,7 @@ namespace Purchasing_management.Business
 
                 if (purchaseOrderFromRepo == null)
                 {
-                    var purchaseOrderToAdd = _mapper.Map<Department>(purchaseOrder);
+                    var purchaseOrderToAdd = _mapper.Map<PurchaseOrder>(purchaseOrder);
                     purchaseOrderToAdd.Id = purchaseOrderId;
                     _dbcontext.Add(purchaseOrderToAdd);
                     _dbcontext.SaveChanges();

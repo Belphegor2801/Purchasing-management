@@ -16,6 +16,8 @@ namespace Purchasing_management.Data.Entity
 
         public string RegistantName { get; set; }
 
+        public Guid CreateByUserId { get; set; }
+
         public virtual ICollection<Supply> SupplyList { get; set; }
     }
 }
